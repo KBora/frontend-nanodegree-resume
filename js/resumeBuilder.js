@@ -1,18 +1,19 @@
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
- 
- var bio = {
-  "name" : "Donatello Ninja Turtle",
-  "role" : "Front End Developer",
-	"contact info" : {
-			"email" : "donatello.turtle@gmail.com",
-			"mobile" : "0421 432 543",
+ 	var bio = {
+		"name": "Bora Chan",
+		"role": "Front End Developer",
+		"contactInfo" : {
+			"email": "bora.chanello@gmail.com",
+			"mobile": "0421 432 543",
+			"github": "KBora",
+			"twitter": "JianHu9",
 			"location" : "Sydney"
-	},
-	"picture URL" : "images/me.jpg",
-	"welcome message" : "Welcome la la la",
-	"skills" : ["Javscript", "HTML", "CSS", "Photoshop"]
+		},
+		"pictureURL" : "images/me.jpg",
+		"welcomeMessage" : "Welcome la la la",
+		"skills" : ["Javscript", "HTML", "CSS", "Photoshop"]
 };
 
 
