@@ -52,3 +52,32 @@ var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></
 	}
 	$("#topContacts").append(formattedSkills);
 
+/* skills */
+var formattedSkills = HTMLskillsStart;
+for (var i=0; i<bio.skills.length; i+=1) {
+	formattedSkills = formattedSkills + HTMLskills.replace("%data%", bio.skills[i]);
+}
+$("#topContacts").append(formattedSkills);
+
+/* work */
+/*
+var HTMLworkStart = '<div class="work-entry"></div>';
+var HTMLworkEmployer = '<a href="#">%data%';
+var HTMLworkTitle = ' - %data%</a>';
+var HTMLworkDates = '<div class="date-text">%data%</div>';
+var HTMLworkLocation = '<div class="location-text">%data%</div>';
+var HTMLworkDescription = '<p><br>%data%</p>';
+*/
+HTMLworkEmployer = HTMLworkEmployer.replace("%data%", work.employer);
+HTMLworkTitle = HTMLworkTitle.replace("%data%", work.position);
+$("#workExperience").append(HTMLworkStart + HTMLworkEmployer + HTMLworkTitle);
+
+/* education */
+/*
+var HTMLschoolStart = '<div class="education-entry"></div>';
+var HTMLschoolName = '<a href="#">%data%';
+var HTMLschoolDegree = ' -- %data%</a>';
+var HTMLschoolDates = '<div class="date-text">%data%</div>';
+var HTMLschoolLocation = '<div class="location-text">%data%</div>';
+var HTMLschoolMajor = '<em><br>Major: %data%</em>';
+*/
