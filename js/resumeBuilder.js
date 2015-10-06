@@ -86,7 +86,8 @@ if (bio.skills.length > 0) {
 	}
 }
 
-for (item in work.jobs) {
+var displayWork = function() {
+	for (item in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
 
 	var formattedEmployerName = HTMLworkEmployer.replace("%data%", work.jobs[item].employer);
@@ -98,7 +99,9 @@ for (item in work.jobs) {
 	$(".work-entry:last").append(formattedEmployerName + formattedEmployerTitle);
 	$(".work-entry:last").append(formattedEmployerLocation);
 	$(".work-entry:last").append(formattedEmployerDates);
-	$(".work-entry:last").append(formattedEmployerDescription);
+	$(".work-entry:last").append(formattedEmployerDescription);	
+}
+
 
 }
 
