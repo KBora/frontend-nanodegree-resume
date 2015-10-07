@@ -86,7 +86,7 @@ if (bio.skills.length > 0) {
 	}
 }
 
-var displayWork = function() {
+function displayWork() {
 	for (item in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
 
@@ -102,6 +102,5 @@ var displayWork = function() {
 	$(".work-entry:last").append(formattedEmployerDescription);	
 }
 
-
-}
+displayWork();
 
