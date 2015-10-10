@@ -52,7 +52,7 @@ var education = {
 	"schools": [
 		{
 			"name": "Central Saint Martins College of Art and Design",
-			"location:": "London",
+			"location": "London",
 			"degree": "BA",
 			"major": ["Graphic Design", "Illustration"],
 			"datesAttended": "2001 - 2004",
@@ -76,13 +76,53 @@ var education = {
 	]
 };
 
-if (bio.skills.length > 0) {
-	
-	$("#header").append(HTMLheaderName.replace("%data%", bio.name));
-	$("#header").append(HTMLskillsStart);
+var projects = {
+	"projectList": [
+		{
+			"title": "Bidinis",
+			"dates": "May 2014 - present",
+			"description": "Customisation, design and development for online fashion accessories store",
+			"image": "images/fry.jpg"
+		},
+		{
+			"title": "Online Partner Visa",
+			"dates": "May 2013 - Dec 2014",
+			"description": "UI designs for automated visa preparation app",
+			"image": "images/fry.jpg"
+		}
+	]
+};
 
-	for (var i=0; i<bio.skills.length; i+=1) {
-		$("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+
+/*
+var HTMLprojectStart = '<div class="project-entry"></div>';
+var HTMLprojectTitle = '<a href="#">%data%</a>';
+var HTMLprojectDates = '<div class="date-text">%data%</div>';
+var HTMLprojectDescription = '<p><br>%data%</p>';
+var HTMLprojectImage = '<img src="%data%">';
+*/
+projects.display = function() {
+	for (project in this.projectList) {
+		$("#projects").append(HTMLprojectStart);
+		var formattedProjectTitle = HTMLprojectTitle.replace("%data%", this.projectList[project].title);
+		var formattedProjectDate = HTMLprojectDates.replace("%data%", this.projectList[project].dates);
+		var formattedProjectDescription = HTMLprojectDescription.replace("%data%", this.projectList[project].description);
+		var formattedProjectImage = HTMLprojectImage.replace("%data%", this.projectList[project].image);
+		$(".project-entry:last").append(formattedProjectTitle);
+		$(".project-entry:last").append(formattedProjectDate);
+		$(".project-entry:last").append(formattedProjectDescription);
+		$(".project-entry:last").append(formattedProjectImage);
+	}
+};
+
+function displayHeader() {
+	if (bio.skills.length > 0) {
+		$("#header").append(HTMLheaderName.replace("%data%", bio.name));
+		$("#header").append(HTMLskillsStart);
+
+		for (var i=0; i<bio.skills.length; i+=1) {
+			$("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+		}
 	}
 }
 
@@ -100,7 +140,17 @@ function displayWork() {
 	$(".work-entry:last").append(formattedEmployerLocation);
 	$(".work-entry:last").append(formattedEmployerDates);
 	$(".work-entry:last").append(formattedEmployerDescription);	
+	}
 }
 
-displayWork();
+function inName(nameString) {
+	var nameArray = nameString.split(" ");
+	return nameArray[0]  + " " + nameArray[1].toUpperCase();
+}
 
+displayHeader();
+displayWork();
+/* $("#main").append(internationalizeButton); */
+projects.display();
+
+$("#mapDiv").append(googleMap);
