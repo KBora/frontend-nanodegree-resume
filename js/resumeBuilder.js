@@ -1,4 +1,19 @@
 
+var bio = {
+	"name": "Bora Chan",
+	"role": "Front End Developer",
+	"contacts" : {
+		"email": "bora.chanello@gmail.com",
+		"mobile": "0421 432 543",
+		"github": "KBora",
+		"twitter": "JianHu9",
+		"location": "Sydney, Australia"
+	},
+	"biopic" : "images/fry.jpg",
+	"welcomeMessage" : "Welcome la la la",
+	"skills" : ["HTML", "CSS", "Javascript", "Photoshop"]
+};
+
 var work = {
 	"jobs": [
 		{
@@ -33,20 +48,6 @@ var work = {
 };
 
 
-var bio = {
-	"name": "Bora Chan",
-	"role": "Front End Developer",
-	"contacts" : {
-		"email": "bora.chanello@gmail.com",
-		"mobile": "0421 432 543",
-		"github": "KBora",
-		"twitter": "JianHu9",
-		"location" : "Sydney"
-	},
-	"pictureURL" : "images/fry.jpg",
-	"welcomeMessage" : "Welcome la la la",
-	"skills" : ["Javascript", "HTML", "CSS", "Photoshop"]
-};
 
 var education = {
 	"schools": [
@@ -153,4 +154,5 @@ displayWork();
 /* $("#main").append(internationalizeButton); */
 projects.display();
 
-$("#mapDiv").append(googleMap);
+/* $("#mapDiv").append(googleMap);*/
+
