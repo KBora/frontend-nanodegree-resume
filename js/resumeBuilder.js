@@ -11,7 +11,43 @@ var bio = {
 	},
 	"biopic" : "images/fry.jpg",
 	"welcomeMessage" : "Welcome la la la",
-	"skills" : ["HTML", "CSS", "Javascript", "Photoshop"]
+	"skills" : ["HTML", "CSS", "Javascript", "Photoshop"],
+	display: function() {
+
+		var formattedName = HTMLheaderName.replace("%data%", bio.name);		
+		var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+		$("#header").prepend(formattedRole);
+		$("#header").prepend(formattedName);
+		
+
+/*
+
+var HTMLbioPic = '<img src="%data%" class="biopic">';
+var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
+
+*/
+
+
+
+		for (contact in bio.contacts) {
+			var formattedContactGeneric = HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%contact%", contact);
+			$("#topContacts").append(formattedContactGeneric);
+		}
+
+		var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic );
+		var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+		$("#header").append(formattedBioPic);
+		$("#header").append(formattedWelcome);
+		
+		
+		if (bio.skills.length > 0) {
+			$("#header").append(HTMLskillsStart);
+			for (var i=0; i<bio.skills.length; i+=1) {
+				$("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+			}
+		}
+
+	}
 };
 
 var work = {
@@ -44,7 +80,23 @@ var work = {
 			"description": "Development and support of Intranet applications.",
 			"location": "London"
 		}
-	]
+	], 
+	display: function() {
+		for (item in work.jobs) {
+			$("#workExperience").append(HTMLworkStart);
+
+			var formattedEmployerName = HTMLworkEmployer.replace("%data%", work.jobs[item].employer);
+			var formattedEmployerTitle = HTMLworkTitle.replace("%data%", work.jobs[item].title);
+			var formattedEmployerLocation = HTMLworkLocation.replace("%data%", work.jobs[item].location);
+			var formattedEmployerDates = HTMLworkDates.replace("%data%", work.jobs[item].datesWorked);
+			var formattedEmployerDescription = HTMLworkDescription.replace("%data%", work.jobs[item].description);
+
+			$(".work-entry:last").append(formattedEmployerName + formattedEmployerTitle);
+			$(".work-entry:last").append(formattedEmployerLocation);
+			$(".work-entry:last").append(formattedEmployerDates);
+			$(".work-entry:last").append(formattedEmployerDescription);	
+		}
+	}
 };
 
 
@@ -146,53 +198,17 @@ var projects = {
 };
 
 
-/*
-var HTMLprojectStart = '<div class="project-entry"></div>';
-var HTMLprojectTitle = '<a href="#">%data%</a>';
-var HTMLprojectDates = '<div class="date-text">%data%</div>';
-var HTMLprojectDescription = '<p><br>%data%</p>';
-var HTMLprojectImage = '<img src="%data%">';
-*/
-
-
-function displayHeader() {
-	if (bio.skills.length > 0) {
-		$("#header").append(HTMLheaderName.replace("%data%", bio.name));
-		$("#header").append(HTMLskillsStart);
-
-		for (var i=0; i<bio.skills.length; i+=1) {
-			$("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
-		}
-	}
-}
-
-function displayWork() {
-	for (item in work.jobs) {
-	$("#workExperience").append(HTMLworkStart);
-
-	var formattedEmployerName = HTMLworkEmployer.replace("%data%", work.jobs[item].employer);
-	var formattedEmployerTitle = HTMLworkTitle.replace("%data%", work.jobs[item].title);
-	var formattedEmployerLocation = HTMLworkLocation.replace("%data%", work.jobs[item].location);
-	var formattedEmployerDates = HTMLworkDates.replace("%data%", work.jobs[item].datesWorked);
-	var formattedEmployerDescription = HTMLworkDescription.replace("%data%", work.jobs[item].description);
-
-	$(".work-entry:last").append(formattedEmployerName + formattedEmployerTitle);
-	$(".work-entry:last").append(formattedEmployerLocation);
-	$(".work-entry:last").append(formattedEmployerDates);
-	$(".work-entry:last").append(formattedEmployerDescription);	
-	}
-}
-
 function inName(nameString) {
 	var nameArray = nameString.split(" ");
 	return nameArray[0]  + " " + nameArray[1].toUpperCase();
 }
 
-displayHeader();
-displayWork();
 /* $("#main").append(internationalizeButton); */
+
+bio.display();
+work.display();
 projects.display();
 education.display();
 
-$("#mapDiv").append(googleMap);
+//$("#mapDiv").append(googleMap);
 
