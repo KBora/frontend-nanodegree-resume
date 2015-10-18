@@ -1,3 +1,4 @@
+
 body,
 div,
 ul,
@@ -11,7 +12,7 @@ h5,
 h6 {
   padding:0;
   margin:0;
-  font-family: "Roboto", sans-serif;
+
 }
 
 .clear-fix {
@@ -85,12 +86,6 @@ p {
   line-height: 21px;
 }
 
-a {
-  color: #1199c3;
-  text-decoration: none;
-  margin-top: 10px;
-  display: block;
-}
 
 .welcome-message {
   font-style: italic;
@@ -127,10 +122,11 @@ a {
   background-color: #4a4a4a;
 }
 
-/* TODO: Replace with image later */
+
 #header {
   background-color: #484848;
 }
+
 
 .flex-box {
   display: -webkit-flex;
@@ -141,6 +137,7 @@ a {
   padding: 10px;
 }
 
+/*
 .center-content {
   padding: 2.5% 5%;
 }
@@ -167,6 +164,7 @@ span {
 #lets-connect {
   text-align: center;
 }
+*/
 
 /* Media queries to handle various device widths */
 
@@ -193,6 +191,8 @@ span {
     display: none;
   }
 }
+
+
 
 #map {
   display: block;
