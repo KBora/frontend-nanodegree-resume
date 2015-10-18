@@ -19,7 +19,7 @@ var bio = {
 		$("#header").prepend(formattedRole);
 		$("#header").prepend(formattedName);
 
-		for (contact in bio.contacts) {
+		for (var contact in bio.contacts) {
 			var formattedContactGeneric = HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%contact%", contact);
 			$("#topContacts").append(formattedContactGeneric);
 			$("#footerContacts").append(formattedContactGeneric);
@@ -66,7 +66,7 @@ var work = {
 		}
 	], 
 	display: function() {
-		for (item in work.jobs) {
+		for (var item in work.jobs) {
 			$("#workExperience").append(HTMLworkStart);
 
 			var formattedEmployerName = HTMLworkEmployer.replace("%data%", work.jobs[item].employer);
