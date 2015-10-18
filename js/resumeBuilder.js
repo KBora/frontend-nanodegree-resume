@@ -1,37 +1,28 @@
 
 var bio = {
-	"name": "Bora Chan",
-	"role": "Front End Developer",
+	"name": "Jian Hu",
+	"role": "Graphic Designer",
 	"contacts" : {
-		"email": "bora.chanello@gmail.com",
-		"mobile": "0421 432 543",
+		"email": "akp@evenfeatures.com",
+		"mobile": "0421 432 XXX",
 		"github": "KBora",
 		"twitter": "JianHu9",
 		"location": "Sydney, Australia"
 	},
-	"biopic" : "images/fry.jpg",
-	"welcomeMessage" : "Welcome la la la",
-	"skills" : ["HTML", "CSS", "Javascript", "Photoshop"],
+	"biopic" : "images/jian-hu-profile.png",
+	"welcomeMessage" : "Welcome to my resume",
+	"skills" : ["Photoshop", "Illustrator", "InDesign", "HTML", "CSS", "Javascript"],
 	display: function() {
 
 		var formattedName = HTMLheaderName.replace("%data%", bio.name);		
 		var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 		$("#header").prepend(formattedRole);
 		$("#header").prepend(formattedName);
-		
-
-/*
-
-var HTMLbioPic = '<img src="%data%" class="biopic">';
-var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
-
-*/
-
-
 
 		for (contact in bio.contacts) {
 			var formattedContactGeneric = HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%contact%", contact);
 			$("#topContacts").append(formattedContactGeneric);
+			$("#footerContacts").append(formattedContactGeneric);
 		}
 
 		var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic );
@@ -39,7 +30,7 @@ var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 		$("#header").append(formattedBioPic);
 		$("#header").append(formattedWelcome);
 		
-		
+
 		if (bio.skills.length > 0) {
 			$("#header").append(HTMLskillsStart);
 			for (var i=0; i<bio.skills.length; i+=1) {
@@ -55,29 +46,22 @@ var work = {
 		{
 			"employer": "Aliens Insurance",
 			"title": "Digital Content Analyst",
-			"datesWorked": "July 2015 - present",
+			"dates": "July 2015 - present",
 			"description": "Front end web development for the Aliens Insurance websites, intranet and extranet sites.",
-			"location": "Sydney"
-		},
-		{
-			"employer": "IBM",
-			"title": "Front End Developer",
-			"datesWorked": "May 2012 - Oct 2014",
-			"description": "Maintenance and enhancements to the web front end of software provisioning application for a large bank",
 			"location": "Sydney"
 		},
 		{
 			"employer": "Freelance",
 			"title": "Graphic Designer and Web Developer",
-			"datesWorked": "July 2005 - present",
-			"description": "Creation of marketing collateral. Customisation and custom development of websites for small to medium sized businesses using Wordpress, Shopify and BigCommerce",
+			"dates": "July 2005 - present",
+			"description": "Creation of marketing collateral. Customisation of websites for small to medium sized businesses using Wordpress, Shopify and BigCommerce.",
 			"location": "Sydney"
 		},
 		{
 			"employer": "Sony Computer Entertainment Europe",
-			"title": "Intranet Developer",
-			"datesWorked": "February 2000 - May 2005",
-			"description": "Development and support of Intranet applications.",
+			"title": "Tea boy",
+			"dates": "February 2000 - May 2005",
+			"description": "Made tea.",
 			"location": "London"
 		}
 	], 
@@ -88,7 +72,7 @@ var work = {
 			var formattedEmployerName = HTMLworkEmployer.replace("%data%", work.jobs[item].employer);
 			var formattedEmployerTitle = HTMLworkTitle.replace("%data%", work.jobs[item].title);
 			var formattedEmployerLocation = HTMLworkLocation.replace("%data%", work.jobs[item].location);
-			var formattedEmployerDates = HTMLworkDates.replace("%data%", work.jobs[item].datesWorked);
+			var formattedEmployerDates = HTMLworkDates.replace("%data%", work.jobs[item].dates);
 			var formattedEmployerDescription = HTMLworkDescription.replace("%data%", work.jobs[item].description);
 
 			$(".work-entry:last").append(formattedEmployerName + formattedEmployerTitle);
@@ -108,23 +92,15 @@ var education = {
 			"location": "London",
 			"degree": "BA",
 			"major": ["Graphic Design", "Illustration"],
-			"datesAttended": "2001 - 2004",
+			"date": "2004",
 			"url": "http://www.arts.ac.uk/csm/"
 		},
-		{
-			"name": "University of Technology, Sydney",
-			"location": "Sydney",
-			"degree": "Bachelor of Information Technology",
-			"datesAttended": "1998 - 2000",
-			"url": "http://www.uts.edu.au/",
-			"major": ["Information Technology"]
-		}
 	],
 	"onlineCourses": [
 		{
 			"title": "Human-Computer Interaction",
 			"school": "Stanford / Coursera",
-			"datesAttended": "2013",
+			"date": "2013",
 			"url": "http://online.stanford.edu/course/hci"
 		}
 	],
@@ -134,7 +110,7 @@ var education = {
 			var formattedSchoolName = HTMLschoolName.replace("%data%", this.schools[school].name);
 			formattedSchoolName = formattedSchoolName.replace("#", this.schools[school].url);
 			var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", this.schools[school].degree);
-			var formattedSchoolDates = HTMLschoolDates.replace("%data%", this.schools[school].datesAttended);
+			var formattedSchoolDates = HTMLschoolDates.replace("%data%", this.schools[school].date);
 			var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", this.schools[school].location);
 			$(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree);
 			$(".education-entry:last").append(formattedSchoolDates);
@@ -145,19 +121,13 @@ var education = {
 			}
 
 		}
-/*
-var HTMLonlineClasses = '<h3>Online Classes</h3>';
-var HTMLonlineTitle = '<a href="#">%data%';
-var HTMLonlineSchool = ' - %data%</a>';
-var HTMLonlineDates = '<div class="date-text">%data%</div>';
-var HTMLonlineURL = '<br><a href="#">%data%</a>';
-*/
+
 		$("#education").append(HTMLonlineClasses);
 		for (var onlineCourse in this.onlineCourses) {
 			$("#education").append(HTMLschoolStart);
 			var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", this.onlineCourses[onlineCourse].title);
 			var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", this.onlineCourses[onlineCourse].school);
-			var formattedOnlineDates = HTMLonlineDates.replace("%data%", this.onlineCourses[onlineCourse].datesAttended);
+			var formattedOnlineDates = HTMLonlineDates.replace("%data%", this.onlineCourses[onlineCourse].date);
 			var formattedOnlineURL = HTMLonlineURL.replace("%data%", this.onlineCourses[onlineCourse].url);
 			
 			$(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool);
@@ -170,16 +140,10 @@ var HTMLonlineURL = '<br><a href="#">%data%</a>';
 var projects = {
 	"projectList": [
 		{
-			"title": "Bidinis",
-			"dates": "May 2014 - present",
-			"description": "Customisation, design and development for online fashion accessories store",
-			"image": "images/fry.jpg"
-		},
-		{
-			"title": "Online Partner Visa",
-			"dates": "May 2013 - Dec 2014",
-			"description": "UI designs for automated visa preparation app",
-			"image": "images/fry.jpg"
+			"title": "Sideralia",
+			"dates": "Aug 2015 - present",
+			"description": "Logo creation, product photography, editorial photography.",
+			"images": ["images/sideralia.png"]
 		}
 	],
 	display: function() {
@@ -188,11 +152,16 @@ var projects = {
 			var formattedProjectTitle = HTMLprojectTitle.replace("%data%", this.projectList[project].title);
 			var formattedProjectDate = HTMLprojectDates.replace("%data%", this.projectList[project].dates);
 			var formattedProjectDescription = HTMLprojectDescription.replace("%data%", this.projectList[project].description);
-			var formattedProjectImage = HTMLprojectImage.replace("%data%", this.projectList[project].image);
+			
+			var formattedProjectImages = "";
+			for (var image in this.projectList[project].images) {
+				formattedProjectImages = formattedProjectImages + HTMLprojectImage.replace("%data%", this.projectList[project].images[image]);
+
+			}
 			$(".project-entry:last").append(formattedProjectTitle);
 			$(".project-entry:last").append(formattedProjectDate);
 			$(".project-entry:last").append(formattedProjectDescription);
-			$(".project-entry:last").append(formattedProjectImage);
+			$(".project-entry:last").append(formattedProjectImages);
 		}		
 	}
 };
@@ -210,5 +179,5 @@ work.display();
 projects.display();
 education.display();
 
-//$("#mapDiv").append(googleMap);
+$("#mapDiv").append(googleMap);
 
