@@ -88,7 +88,7 @@ var work = {
 var education = {
 	"schools": [
 		{
-			"name": "Central Saint Martins College of Art and Design",
+			"name": "The London Institute",
 			"location": "London",
 			"degree": "BA",
 			"major": ["Graphic Design", "Illustration"],
