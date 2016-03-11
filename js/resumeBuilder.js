@@ -1,3 +1,120 @@
+$(function(){ // this function is passed into jquery and run onload of the document 
+
+	var model = {
+
+		bio : {
+			"name": "Jian Hu",
+			"role": "Graphic Designer",
+			"contacts" : {
+				"email": "akp@evenfeatures.com",
+				"mobile": "0421 432 XXX",
+				"github": "KBora",
+				"twitter": "JianHu9",
+				"location": "Sydney, Australia"
+			},
+			"biopic" : "images/jian-hu-profile.png",
+			"welcomeMessage" : "Welcome to my resume",
+			"skills" : ["Photoshop", "Illustrator", "InDesign", "HTML", "CSS", "Javascript"]
+		},
+
+		jobs : [
+			{
+				"employer": "Aliens Insurance",
+				"title": "Digital Content Analyst",
+				"dates": "July 2015 - present",
+				"description": "Front end web development for the Aliens Insurance websites, intranet and extranet sites.",
+				"location": "Sydney"
+			},
+			{
+				"employer": "Freelance",
+				"title": "Graphic Designer and Web Developer",
+				"dates": "July 2005 - present",
+				"description": "Creation of marketing collateral. Customisation of websites for small to medium sized businesses using Wordpress, Shopify and BigCommerce.",
+				"location": "Sydney"
+			},
+			{
+				"employer": "Sony Computer Entertainment Europe",
+				"title": "Tea boy",
+				"dates": "February 2000 - May 2005",
+				"description": "Made tea.",
+				"location": "London"
+			}
+		],
+
+		"schools": [
+			{
+				"name": "Central Saint Martins College of Art and Design",
+				"location": "London",
+				"degree": "BA",
+				"major": ["Graphic Design", "Illustration"],
+				"date": "2004",
+				"url": "http://www.arts.ac.uk/csm/"
+			},
+		],
+
+		"onlineCourses": [
+			{
+					"title": "Human-Computer Interaction",
+					"school": "Stanford / Coursera",
+					"date": "2013",
+					"url": "http://online.stanford.edu/course/hci"
+			}
+		],
+
+		"projectList": [
+			{
+				"title": "Sideralia",
+				"dates": "Aug 2015 - present",
+				"description": "Logo creation, product photography, editorial photography.",
+				"images": ["images/sideralia.png"]
+			}
+		],
+
+	};
+
+
+	var octopus = {
+
+		init: function() {
+			view.init()
+		}
+
+	};
+
+
+	var view = {
+
+		init: function() {
+			// TO DO: Display bio, jobs, schools, online courses
+		},
+
+		displayBio: function() {
+
+		},
+
+		displayJobs: function() {
+
+		},
+
+		displaySchools: function() {
+
+		},
+
+		displayOnlineCourses: function() {
+
+		},
+
+		displayProjects: function() {
+
+		}
+
+
+	};
+
+
+	octopus.init();
+
+});
 
 var bio = {
 	"name": "Jian Hu",
@@ -174,7 +291,7 @@ function inName(nameString) {
 
 /* $("#main").append(internationalizeButton); */
 
-bio.display();
+//bio.display();
 work.display();
 projects.display();
 education.display();
