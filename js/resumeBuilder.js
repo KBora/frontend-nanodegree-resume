@@ -70,6 +70,10 @@ $(function(){ // this function is passed into jquery and run onload of the docum
 			}
 		],
 
+		getBio : function() {
+			return model.bio;
+		}
+
 	};
 
 
@@ -86,10 +90,34 @@ $(function(){ // this function is passed into jquery and run onload of the docum
 
 		init: function() {
 			// TO DO: Display bio, jobs, schools, online courses
+			view.displayBio();
 		},
 
 		displayBio: function() {
+			var bioData = model.getBio();
+			var formattedName = HTMLheaderName.replace("%data%", bioData.name);		
+			var formattedRole = HTMLheaderRole.replace("%data%", bioData.role);
+			$("#header").prepend(formattedRole);
+			$("#header").prepend(formattedName);
 
+			for (var contact in bioData.contacts) {
+				var formattedContactGeneric = HTMLcontactGeneric.replace("%data%", bioData.contacts[contact]).replace("%contact%", contact);
+				$("#topContacts").append(formattedContactGeneric);
+				$("#footerContacts").append(formattedContactGeneric);
+			}
+
+			var formattedBioPic = HTMLbioPic.replace("%data%", bioData.biopic );
+			var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bioData.welcomeMessage);
+			$("#header").append(formattedBioPic);
+			$("#header").append(formattedWelcome);
+			
+
+			if (bioData.skills.length > 0) {
+				$("#header").append(HTMLskillsStart);
+				for (var i=0; i<bioData.skills.length; i+=1) {
+					$("#skills").append(HTMLskills.replace("%data%", bioData.skills[i]));
+				}
+			}
 		},
 
 		displayJobs: function() {
