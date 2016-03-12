@@ -229,49 +229,5 @@ $(function(){ // this function is passed into jquery and run onload of the docum
 
 
 
-
-
-var projects = {
-	"projectList": [
-		{
-			"title": "Sideralia",
-			"dates": "Aug 2015 - present",
-			"description": "Logo creation, product photography, editorial photography.",
-			"images": ["images/sideralia.png"]
-		}
-	],
-	display: function() {
-		for (var project in projectData) {
-			$("#projects").append(HTMLprojectStart);
-			var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projectData[project].title);
-			var formattedProjectDate = HTMLprojectDates.replace("%data%", projectData[project].dates);
-			var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projectData[project].description);
-			
-			var formattedProjectImages = "";
-			for (var image in projectData[project].images) {
-				formattedProjectImages = formattedProjectImages + HTMLprojectImage.replace("%data%", projectData[project].images[image]);
-
-			}
-			$(".project-entry:last").append(formattedProjectTitle);
-			$(".project-entry:last").append(formattedProjectDate);
-			$(".project-entry:last").append(formattedProjectDescription);
-			$(".project-entry:last").append(formattedProjectImages);
-		}		
-	}
-};
-
-
-function inName(nameString) {
-	var nameArray = nameString.split(" ");
-	return nameArray[0]  + " " + nameArray[1].toUpperCase();
-}
-
-/* $("#main").append(internationalizeButton); */
-
-//bio.display();
-//work.display();
-//projects.display();
-//education.display();
-
 $("#mapDiv").append(googleMap);
 
