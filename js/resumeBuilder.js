@@ -61,7 +61,7 @@ $(function(){ // this function is passed into jquery and run onload of the docum
 			}
 		],
 
-		"projectList": [
+		"projects": [
 			{
 				"title": "Sideralia",
 				"dates": "Aug 2015 - present",
@@ -89,6 +89,14 @@ $(function(){ // this function is passed into jquery and run onload of the docum
 
 		getSchools: function() {
 			return model.schools;
+		}, 
+
+		getOnlineCourses: function() {
+			return model.onlineCourses;
+		},
+
+		getProjects: function() {
+			return model.projects;
 		}
 
 	};
@@ -97,10 +105,12 @@ $(function(){ // this function is passed into jquery and run onload of the docum
 	var view = {
 
 		init: function() {
-			// TO DO: Display  schools, online courses
+			// TO DO: Display  online courses
 			view.displayBio();
 			view.displayJobs();
 			view.displaySchools();
+			view.displayOnlineCourses();
+			view.displayProjects();
 		},
 
 		displayBio: function() {
@@ -172,9 +182,40 @@ $(function(){ // this function is passed into jquery and run onload of the docum
 
 		displayOnlineCourses: function() {
 
+			var onlineCoursesData = octopus.getOnlineCourses();
+			$("#education").append(HTMLonlineClasses);
+			for (var onlineCourse in onlineCoursesData) {
+				$("#education").append(HTMLschoolStart);
+				var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", onlineCoursesData[onlineCourse].title);
+				var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", onlineCoursesData[onlineCourse].school);
+				var formattedOnlineDates = HTMLonlineDates.replace("%data%", onlineCoursesData[onlineCourse].date);
+				var formattedOnlineURL = HTMLonlineURL.replace("%data%", onlineCoursesData[onlineCourse].url);
+				
+				$(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool);
+				$(".education-entry:last").append(formattedOnlineDates);
+				$(".education-entry:last").append(formattedOnlineURL);
+			}
+
 		},
 
 		displayProjects: function() {
+
+			var projectData = octopus.getProjects();
+			for (var project in projectData) {
+				$("#projects").append(HTMLprojectStart);
+				var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projectData[project].title);
+				var formattedProjectDate = HTMLprojectDates.replace("%data%", projectData[project].dates);
+				var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projectData[project].description);
+				
+				var formattedProjectImages = "";
+				for (var image in projectData[project].images) {
+					formattedProjectImages = formattedProjectImages + HTMLprojectImage.replace("%data%", projectData[project].images[image]);
+				}
+				$(".project-entry:last").append(formattedProjectTitle);
+				$(".project-entry:last").append(formattedProjectDate);
+				$(".project-entry:last").append(formattedProjectDescription);
+				$(".project-entry:last").append(formattedProjectImages);
+			}		
 
 		}
 
@@ -189,25 +230,6 @@ $(function(){ // this function is passed into jquery and run onload of the docum
 
 
 
-var education = {
-
-	display: function() {
-
-
-		$("#education").append(HTMLonlineClasses);
-		for (var onlineCourse in this.onlineCourses) {
-			$("#education").append(HTMLschoolStart);
-			var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", this.onlineCourses[onlineCourse].title);
-			var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", this.onlineCourses[onlineCourse].school);
-			var formattedOnlineDates = HTMLonlineDates.replace("%data%", this.onlineCourses[onlineCourse].date);
-			var formattedOnlineURL = HTMLonlineURL.replace("%data%", this.onlineCourses[onlineCourse].url);
-			
-			$(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool);
-			$(".education-entry:last").append(formattedOnlineDates);
-			$(".education-entry:last").append(formattedOnlineURL);
-		}
-	}
-};
 
 var projects = {
 	"projectList": [
@@ -219,15 +241,15 @@ var projects = {
 		}
 	],
 	display: function() {
-		for (var project in this.projectList) {
+		for (var project in projectData) {
 			$("#projects").append(HTMLprojectStart);
-			var formattedProjectTitle = HTMLprojectTitle.replace("%data%", this.projectList[project].title);
-			var formattedProjectDate = HTMLprojectDates.replace("%data%", this.projectList[project].dates);
-			var formattedProjectDescription = HTMLprojectDescription.replace("%data%", this.projectList[project].description);
+			var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projectData[project].title);
+			var formattedProjectDate = HTMLprojectDates.replace("%data%", projectData[project].dates);
+			var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projectData[project].description);
 			
 			var formattedProjectImages = "";
-			for (var image in this.projectList[project].images) {
-				formattedProjectImages = formattedProjectImages + HTMLprojectImage.replace("%data%", this.projectList[project].images[image]);
+			for (var image in projectData[project].images) {
+				formattedProjectImages = formattedProjectImages + HTMLprojectImage.replace("%data%", projectData[project].images[image]);
 
 			}
 			$(".project-entry:last").append(formattedProjectTitle);
@@ -248,7 +270,7 @@ function inName(nameString) {
 
 //bio.display();
 //work.display();
-projects.display();
+//projects.display();
 //education.display();
 
 $("#mapDiv").append(googleMap);
